@@ -31,7 +31,7 @@
 							}
 						],
 						"styles": [
-							"src/styles.scss"
+							"src/styles.css"
 						],
 						"main": "src/main.ts",
 						"outputPath": "dist/recipe-nest-shell",

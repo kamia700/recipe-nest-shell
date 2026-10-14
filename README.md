@@ -8,6 +8,9 @@ micro-frontends via Webpack Module Federation
 See the [top-level README](../README.md) for how to run this together with
 the `recipenest-mf-recipes` remote.
 
+How the shell and the remote are wired together:
+[docs/module-federation.md](./docs/module-federation.md).
+
 ## Development server
 
 Standalone (routes that depend on a remote won't render unless the remote is
@@ -21,13 +24,16 @@ Runs on `http://localhost:4200`.
 
 ## Remotes
 
-Configured in [`webpack.config.js`](./webpack.config.js) and consumed in
-[`src/app/app.routes.ts`](./src/app/app.routes.ts):
+Remote URLs live in [`public/mf.manifest.json`](./public/mf.manifest.json)
+(loaded at runtime by `initFederation` in [`src/main.ts`](./src/main.ts)) and
+are consumed by name in [`src/app/app.routes.ts`](./src/app/app.routes.ts).
+If a remote fails to load, the route shows a fallback
+(`RemoteUnavailableComponent`) instead of breaking navigation.
 
-| Path | Remote | Expected URL | Status |
+| Path | Manifest key | URL | Status |
 | --- | --- | --- | --- |
-| `/recipes` | `recipenest-mf-recipes` | `http://localhost:4201/remoteEntry.js` | implemented |
-| `/shopping` | — | `http://localhost:4202/remoteEntry.js` | no project yet, will fail to load |
+| `/recipes` | `recipes` | `http://localhost:4201/remoteEntry.js` | implemented |
+| `/shopping` | — | — | no project / manifest entry yet, shows the fallback |
 
 ## Building
 

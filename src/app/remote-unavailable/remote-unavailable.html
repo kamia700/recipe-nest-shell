@@ -1,0 +1,13 @@
+<div class="max-w-md mx-auto mt-16 p-6 bg-white rounded-lg shadow-sm border text-center">
+  <h2 class="text-lg font-semibold mb-2">Раздел временно недоступен</h2>
+  <p class="text-sm text-gray-500 mb-4">
+    Не удалось загрузить модуль «{{ remoteName }}». Попробуйте обновить страницу позже.
+  </p>
+  <button
+    type="button"
+    (click)="retry()"
+    class="px-4 py-2 rounded-lg text-sm font-medium bg-gray-100
+           hover:bg-gray-200 transition-colors">
+    Повторить
+  </button>
+</div>

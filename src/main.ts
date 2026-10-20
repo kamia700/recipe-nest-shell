@@ -1,10 +1,10 @@
-import { initFederation } from '@angular-architects/module-federation';
+import { registerRemotesFromManifest } from './federation';
 
-// Read remote URLs from the manifest and preload their remoteEntry.js
-// so shared dependencies are negotiated before Angular starts.
-// An error (remote not running) must not take down the shell — log it and start anyway:
-// the unavailable remote's route will show a fallback (see app/remote-loader.ts).
-initFederation('/mf.manifest.json')
+// Read remote URLs from the manifest and register them in the Module Federation runtime.
+// Remotes themselves are loaded lazily, on the first visit to their route.
+// An error (manifest unavailable) must not take down the shell — log it and start anyway:
+// the remote's route will show a fallback (see app/remote-loader.ts).
+registerRemotesFromManifest('/mf.manifest.json')
 	.catch(err => console.error(err))
 	// The async import() boundary is required for Module Federation —
 	// otherwise "Shared module is not available for eager consumption".

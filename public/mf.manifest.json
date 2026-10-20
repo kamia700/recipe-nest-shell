@@ -1,3 +1,4 @@
 {
-  "recipes": "http://localhost:4201/remoteEntry.js"
+  "recipes": "http://localhost:4201/remoteEntry.js",
+  "shopping": "http://localhost:4202/remoteEntry.js"
 }
